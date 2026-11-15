@@ -1,9 +1,11 @@
-import type { NextConfig } from "next";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin();
 
-const nextConfig: NextConfig = {
+/** @type {import("next").NextConfig} */
+const nextConfig = {
   /* config options here */
   webpack(config) {
     config.module.rules.push({
@@ -20,7 +22,7 @@ const nextConfig: NextConfig = {
     ],
   },
   turbopack: {
-    root: __dirname,
+    root: path.dirname(fileURLToPath(import.meta.url)),
     rules: {
       "*.svg": {
         loaders: ["@svgr/webpack"],
