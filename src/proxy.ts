@@ -11,7 +11,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 const AUTH_COOKIE = process.env.NEXT_PUBLIC_AUTH_COOKIE || "gog_admin_token";
 const STUDENT_COOKIE =
   process.env.NEXT_PUBLIC_STUDENT_COOKIE || "gog_student_token";
-const PUBLIC_PATHS = ["/signin"];
+const PUBLIC_PATHS = ["/signin", "/forgot-password"];
 
 type Check<T> =
   | { status: "ok"; data: T }
@@ -20,10 +20,35 @@ type Check<T> =
 
 // Every protected page is verified against the API on the server, so a forged
 // or stale cookie, a removed permission or a deleted user never reaches a page.
+// A successful check is remembered for a few seconds so clicking around does not
+// call the API on every single page navigation (this was the main source of lag).
+const CACHE_MS = 10_000;
+const okCache = new Map<string, { at: number; data: unknown }>();
+
 async function verify<T>(
   path: string,
   token: string,
   retry = true,
+): Promise<Check<T>> {
+  const key = `${path}|${token}`;
+  const hit = okCache.get(key);
+  if (hit && Date.now() - hit.at < CACHE_MS) {
+    return { status: "ok", data: hit.data as T };
+  }
+  const result = await verifyFresh<T>(path, token, retry);
+  if (result.status === "ok") {
+    if (okCache.size > 500) okCache.clear();
+    okCache.set(key, { at: Date.now(), data: result.data });
+  } else {
+    okCache.delete(key);
+  }
+  return result;
+}
+
+async function verifyFresh<T>(
+  path: string,
+  token: string,
+  retry: boolean,
 ): Promise<Check<T>> {
   try {
     const res = await fetch(`${API_URL}${path}`, {
@@ -38,7 +63,7 @@ async function verify<T>(
     // One quick retry: the API may just be restarting.
     if (retry) {
       await new Promise((r) => setTimeout(r, 500));
-      return verify<T>(path, token, false);
+      return verifyFresh<T>(path, token, false);
     }
     return { status: "down" };
   }

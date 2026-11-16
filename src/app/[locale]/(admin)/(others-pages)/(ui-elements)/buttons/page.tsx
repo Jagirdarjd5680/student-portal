@@ -7,9 +7,9 @@ import ButtonsWithIcon from "@/components/others/ui-elements/buttons/with-icon";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Next.js Buttons | TailAdmin - Next.js Dashboard Template",
+  title: "Next.js Buttons | God of Graphics - Next.js Dashboard Template",
   description:
-    "This is Next.js Buttons page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "This is Next.js Buttons page for God of Graphics - Next.js Tailwind CSS Admin Dashboard Template",
 };
 
 export default function Buttons() {

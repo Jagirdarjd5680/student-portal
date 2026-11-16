@@ -3,10 +3,8 @@
 import { Link } from "@/i18n/navigation";
 import { ChevronLeftIcon } from "@/icons";
 import { cn } from "@/utils";
-import AuthDivider from "../divider";
 import SignInFormFields from "./form";
 import SignInHeader from "./header";
-import { SocialButtons } from "./social-button";
 
 export default function SignIn() {
   return (
@@ -26,8 +24,6 @@ export default function SignIn() {
           <SignInHeader description="Enter your email or Student ID and password to sign in!" />
 
           <div>
-            <SocialButtons />
-            <AuthDivider />
             <SignInFormFields />
 
             <div className="mt-5">

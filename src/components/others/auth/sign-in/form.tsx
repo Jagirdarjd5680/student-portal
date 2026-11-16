@@ -55,7 +55,6 @@ export default function SignInFormFields() {
         saveStudentSession(res.token, res.student);
         router.replace("/student/dashboard");
       }
-      router.refresh();
     } catch (err) {
       setError(errorMessage(err));
     }
@@ -132,7 +131,7 @@ export default function SignInFormFields() {
           </FieldLabel>
         </Field>
         <Link
-          href="/reset-password"
+          href="/forgot-password"
           className="text-sm text-brand-500 hover:text-brand-600 dark:text-brand-400"
         >
           Forgot password?

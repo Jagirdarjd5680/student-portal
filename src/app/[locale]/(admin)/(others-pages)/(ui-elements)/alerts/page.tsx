@@ -8,9 +8,9 @@ import WarningAlert from "@/components/others/ui-elements/alerts/warning-alert";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Next.js Alerts | TailAdmin - Next.js Dashboard Template",
+  title: "Next.js Alerts | God of Graphics - Next.js Dashboard Template",
   description:
-    "This is Next.js Alerts page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "This is Next.js Alerts page for God of Graphics - Next.js Tailwind CSS Admin Dashboard Template",
   // other metadata
 };
 

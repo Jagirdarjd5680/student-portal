@@ -1,4 +1,4 @@
-# AGENTS.md — TailAdmin Pro
+# AGENTS.md — God of Graphics
 
 Next.js 16 (App Router) · React 19 · strict TypeScript · Tailwind CSS v4 · next-intl v4 · Base UI · react-hook-form + zod · TanStack Table · ApexCharts · FullCalendar · Swiper · flatpickr
 

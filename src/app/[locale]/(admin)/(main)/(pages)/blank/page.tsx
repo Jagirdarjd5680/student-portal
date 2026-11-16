@@ -3,8 +3,8 @@ import BlankPageContent from "@/components/main/pages/blank-page";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Blank Page | TailAdmin - Next.js Admin Dashboard Template",
-  description: "This is Next.js Blank Page TailAdmin Dashboard Template",
+  title: "Blank Page | God of Graphics - Next.js Admin Dashboard Template",
+  description: "This is Next.js Blank Page God of Graphics Dashboard Template",
 };
 
 export default function BlankPage() {

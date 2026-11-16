@@ -4,9 +4,9 @@ import BarChartOne from "@/components/others/charts/bar/one";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Next.js Bar Chart | TailAdmin - Next.js Dashboard Template",
+  title: "Next.js Bar Chart | God of Graphics - Next.js Dashboard Template",
   description:
-    "This is Next.js Bar Chart page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "This is Next.js Bar Chart page for God of Graphics - Next.js Tailwind CSS Admin Dashboard Template",
 };
 
 export default function BarChartPage() {

@@ -30,6 +30,13 @@ const nextConfig = {
       },
     },
   },
+  // Shared hosting caps threads per account: the default (one build worker per
+  // server CPU, 58 here) crashes with "OS can't spawn worker thread".
+  experimental: {
+    cpus: 1,
+    workerThreads: false,
+    webpackBuildWorker: false,
+  },
   poweredByHeader: false,
   headers() {
     return [

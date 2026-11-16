@@ -8,9 +8,9 @@ import OnlineIndicator from "@/components/others/ui-elements/avatars/online-indi
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Next.js Avatars | TailAdmin - Next.js Dashboard Template",
+  title: "Next.js Avatars | God of Graphics - Next.js Dashboard Template",
   description:
-    "This is Next.js Avatars page for TailAdmin - Next.js Tailwind CSS Admin Dashboard Template",
+    "This is Next.js Avatars page for God of Graphics - Next.js Tailwind CSS Admin Dashboard Template",
 };
 
 export default function AvatarPage() {

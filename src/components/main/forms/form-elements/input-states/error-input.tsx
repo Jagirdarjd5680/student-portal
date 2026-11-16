@@ -7,7 +7,7 @@ export default function ErrorInput() {
       <FieldLabel>Email</FieldLabel>
       <Input
         type="email"
-        placeholder="demo-email@tailadmin.com"
+        placeholder="demo-email@godofgraphics.com"
         aria-invalid="true"
       />
       <FieldError className="text-xs">Clear guidance for users.</FieldError>

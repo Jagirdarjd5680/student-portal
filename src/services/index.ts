@@ -143,6 +143,20 @@ export const authService = {
       email,
       password,
     }),
+  forgotSend: (email: string) =>
+    api.post<{ success: boolean; message: string }>("/auth/forgot", { email }),
+  forgotVerify: (email: string, otp: string) =>
+    api.post<{ success: boolean; reset_token: string }>("/auth/forgot/verify", {
+      email,
+      otp,
+    }),
+  forgotReset: (body: {
+    email: string;
+    reset_token: string;
+    new_password: string;
+    confirm_password: string;
+  }) =>
+    api.post<{ success: boolean; message: string }>("/auth/forgot/reset", body),
 };
 
 export const dashboardService = {
