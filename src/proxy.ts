@@ -63,7 +63,16 @@ export default async function proxy(request: NextRequest) {
   const studentToken = request.cookies.get(STUDENT_COOKIE)?.value;
 
   const go = (path: string, clear?: string) => {
-    const res = NextResponse.redirect(new URL(path, request.url));
+    // Behind a reverse proxy request.url holds the internal host (localhost:PORT),
+    // so build the redirect from the public host the visitor actually used.
+    const host =
+      request.headers.get("x-forwarded-host")?.split(",")[0].trim() ||
+      request.headers.get("host") ||
+      request.nextUrl.host;
+    const proto =
+      request.headers.get("x-forwarded-proto")?.split(",")[0].trim() ||
+      request.nextUrl.protocol.replace(":", "");
+    const res = NextResponse.redirect(new URL(path, `${proto}://${host}`));
     if (clear) res.cookies.delete(clear);
     return res;
   };
